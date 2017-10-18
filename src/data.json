@@ -1,0 +1,32 @@
+{
+  "product_1": {
+    "gender": "Femme",
+    "type": "Haut",
+    "name": "T-shirt",
+    "img": "../assets/chemise-femme.jpeg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quasi harum blanditiis nulla recusandae magnam voluptates",
+    "price": 45.54,
+    "isAvailable": true,
+    "salesprice": 13,
+    "size": {
+      "size1": "XS",
+      "size2": "S",
+      "size3": "M"
+    }
+  },
+  "product_2": {
+    "gender": "Homme",
+    "type": "Haut",
+    "name": "Pantalon",
+    "isAvailable": true,
+    "img": "../assets/chemise-femme.jpeg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "price": 54.12,
+    "salesprice": 13,
+    "size": {
+      "size1": "XS",
+      "size2": "S",
+      "size3": "M"
+    }
+  }
+}

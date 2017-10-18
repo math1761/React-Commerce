@@ -1,0 +1,38 @@
+.main-container {
+  margin-top: 50px;
+}
+
+input {
+  width: 300px !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 300px !important;
+  margin-bottom: 20px;
+}
+
+.basket-icon:hover {
+  background-color: white;
+  color: #F28033;
+}
+
+.top-triangle {
+  position: absolute;
+  top: 50px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7.5px 15px 7.5px;
+  border-color: transparent transparent #007bff transparent;
+}
+
+.icon-right {
+  float: right;
+  padding-right: 10px;
+}
+
+.order-container {
+  height: 100px;
+}

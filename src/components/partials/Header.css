@@ -1,0 +1,21 @@
+.header {
+	height: 60px;
+	width: 100%;
+	background: #000;
+}
+
+ul {
+	display: inline-block;
+}
+
+.icon-right {
+	float: right;
+	padding-right: 10px;
+}
+
+.logo {
+	font-size: 20px;
+	font-weight: 600;
+	font-family: 'Source Sans Pro';
+	color: white;
+}
