@@ -6,7 +6,7 @@
     "img": "../assets/chemise-femme.jpeg",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quasi harum blanditiis nulla recusandae magnam voluptates",
     "price": 45.54,
-    "isAvailable": true,
+    "isAvailable": false,
     "salesprice": 13,
     "size": {
       "size1": "XS",

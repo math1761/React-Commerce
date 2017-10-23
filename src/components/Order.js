@@ -18,8 +18,7 @@ export default class Order extends React.Component {
 
         return (
             <li key={key}>
-                <span>{count} {clothe.name}</span>
-                <span className="price">{count * clothe.price}</span>
+                <span>{count} {clothe.name} : <strong className="price">{clothe.price}</strong></span>
             </li>
         )
     }
@@ -39,12 +38,10 @@ export default class Order extends React.Component {
         return (
             <div className="order-container">
                 <h2>Commande</h2>
-                <ul>
-                    <li style={{"listStyle": "none"}}>
-                        {orderIds.map(key => this.renderOrder(key))}
-                    </li>
-                    <li style={{"listStyle": "none"}} className="orders">
-                        <span>{total} €</span>
+                <ul className="order">
+                    {orderIds.map(this.renderOrder)}
+                    <li>
+                        <strong>Total: {total} €</strong>
                     </li>
                 </ul>
             </div>

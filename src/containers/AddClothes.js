@@ -2,9 +2,9 @@ import React from 'react';
 import '../global.css';
 import Header from '../components/partials/Header';
 import Inventory from '../components/Inventory';
-import products from '../data.json';
-import ProductList from "../components/ProductList";
+import Product from "../components/Product";
 import Order from '../components/Order';
+import base from '../base';
 
 class AddClothes extends React.Component {
 
@@ -13,10 +13,18 @@ class AddClothes extends React.Component {
 
         this.addClothes = this.addClothes.bind(this);
         this.addToOrder = this.addToOrder.bind(this);
+        this.updateClothe = this.updateClothe.bind(this);
         this.state = {
-            clothes: products,
+            clothes: {},
             order: {}
         };
+    }
+
+    componentDidMount(){
+        base.syncState(`add`, {
+            context: this,
+            state: 'clothes'
+        });
     }
 
     addClothes(clothe) {
@@ -36,6 +44,13 @@ class AddClothes extends React.Component {
         this.setState({order});
     }
 
+    updateClothe(key, updatedClothe) {
+        const clothes = {...this.state.clothes};
+        clothes[key] = updatedClothe;
+
+        this.setState({clothes})
+    }
+
     render() {
         return (
             <div>
@@ -44,7 +59,7 @@ class AddClothes extends React.Component {
                     <div className="row">
                         <div className="col-md-4 col-xs-12">
                             <ul>
-                                {Object.keys(this.state.clothes).map(key => <ProductList key={key}
+                                {Object.keys(this.state.clothes).map(key => <Product key={key}
                                                                                          index={key}
                                                                                          addToOrder={this.addToOrder}
                                                                                          details={this.state.clothes[key]}/>)}
@@ -55,7 +70,7 @@ class AddClothes extends React.Component {
                                    order={this.state.order}/>
                         </div>
                         <div className="col-md-4 col-xs-12">
-                            <Inventory addClothes={this.addClothes}/>
+                            <Inventory clothes={this.state.clothes} updateClothe={this.updateClothe} addClothes={this.addClothes}/>
                         </div>
                     </div>
                 </div>
