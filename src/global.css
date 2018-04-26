@@ -36,3 +36,7 @@ textarea {
 .order-container {
   height: 100px;
 }
+
+.hide {
+  display: none;
+}

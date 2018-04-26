@@ -1,26 +1,14 @@
 import React from 'react';
-import CreateClotheForm from './CreateClotheForm';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
-class Inventory extends React.Component {
+export default class ChangeModal extends React.Component {
 
     constructor() {
         super();
-
-        this.renderInventory = this.renderInventory.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.renderProduct = this.renderProduct.bind(this);
     }
 
-    handleChange(e, key) {
-        const clothes = this.props.clothes[key];
-
-        const updatedClothe = {
-            ...clothes,
-            [e.target.name]: e.target.value
-        };
-        this.props.updateClothe(key, updatedClothe);
-    }
-
-    renderInventory(key) {
+    renderProduct(key) {
         const clothes = this.props.clothes[key];
         return (
             <div className="form-group" key={key}>
@@ -51,13 +39,17 @@ class Inventory extends React.Component {
 
     render() {
         return (
-            <div>
-
-                <h2>Ajouter un habit</h2>
-                <CreateClotheForm addClothes={this.props.addClothes}/>
-            </div>
-        )
+            <Modal isOpen={this.props.openModalState} toggle={this.props.toggle}>
+                <ModalHeader toggle={this.props.toggleModal}>
+                    Modifier
+                </ModalHeader>
+                <ModalBody>
+                    {Object.keys(this.props.clothes).map(key => this.renderProduct(key))}
+                </ModalBody>
+                <ModalFooter>
+                    <Button onClick={this.props.toggleModal}>Fermer</Button>
+                </ModalFooter>
+            </Modal>
+        );
     }
 }
-
-export default Inventory;

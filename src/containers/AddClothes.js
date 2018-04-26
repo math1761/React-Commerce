@@ -4,6 +4,7 @@ import Header from '../components/partials/Header';
 import Inventory from '../components/Inventory';
 import Product from "../components/Product";
 import Order from '../components/Order';
+import ChangeModal from '../components/ChangeModal';
 import base from '../base';
 
 class AddClothes extends React.Component {
@@ -14,13 +15,15 @@ class AddClothes extends React.Component {
         this.addClothes = this.addClothes.bind(this);
         this.addToOrder = this.addToOrder.bind(this);
         this.updateClothe = this.updateClothe.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.state = {
             clothes: {},
-            order: {}
+            order: {},
+            openModal: false
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         base.syncState(`add`, {
             context: this,
             state: 'clothes'
@@ -51,6 +54,14 @@ class AddClothes extends React.Component {
         this.setState({clothes})
     }
 
+    toggleModal(key) {
+
+
+        this.setState({
+            openModal: !this.state.openModal
+        });
+    }
+
     render() {
         return (
             <div>
@@ -60,9 +71,11 @@ class AddClothes extends React.Component {
                         <div className="col-md-4 col-xs-12">
                             <ul>
                                 {Object.keys(this.state.clothes).map(key => <Product key={key}
-                                                                                         index={key}
-                                                                                         addToOrder={this.addToOrder}
-                                                                                         details={this.state.clothes[key]}/>)}
+                                                                                     index={key}
+                                                                                     addToOrder={this.addToOrder}
+                                                                                     details={this.state.clothes[key]}
+                                                                                     modal={this.toggleModal}
+                                />)}
                             </ul>
                         </div>
                         <div className="col-md-4 col-xs-12">
@@ -70,9 +83,11 @@ class AddClothes extends React.Component {
                                    order={this.state.order}/>
                         </div>
                         <div className="col-md-4 col-xs-12">
-                            <Inventory clothes={this.state.clothes} updateClothe={this.updateClothe} addClothes={this.addClothes}/>
+                            <Inventory clothes={this.state.clothes} updateClothe={this.updateClothe}
+                                       addClothes={this.addClothes}/>
                         </div>
                     </div>
+                    <ChangeModal clothes={this.state.clothes} openModalState={this.state.openModal} toggleModal={this.toggleModal}/>
                 </div>
             </div>
         );
